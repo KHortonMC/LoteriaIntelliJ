@@ -110,12 +110,11 @@ public class LoteriaCard {
     //Equals method
     @Override
     public boolean equals(Object o) {
-        if (o == null || !(o instanceof LoteriaCard)) {
-            return false;
+        if (o instanceof LoteriaCard other) {
+            return this.cardName.equals(other.cardName)
+                    && this.cardNum == other.cardNum
+                    && this.imageName.equals(other.imageName);
         }
-        LoteriaCard other = (LoteriaCard) o;
-
-        return this.cardName.equals(other.cardName) && this.cardNum == other.cardNum
-                && this.imageName.equals(other.imageName);
+        return false;
     }
 }
