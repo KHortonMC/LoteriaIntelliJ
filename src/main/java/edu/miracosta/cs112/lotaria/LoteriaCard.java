@@ -1,6 +1,7 @@
-package replit;
+package edu.miracosta.cs112.lotaria;
 
 import javafx.scene.image.Image;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -26,28 +27,22 @@ LoteriaCard
 -----------------------------------------
 */
 
-public class LoteriaCard
-{
+public class LoteriaCard {
     // INSTANCE VARIABLES
     private String cardName = "";
     private String imageName = "";
     private int cardNum = 0;
 
     //Constructor
-    public LoteriaCard(String cardName, String imageName, int cardNum)
-    {
+    public LoteriaCard(String cardName, String imageName, int cardNum) {
         this.setAll(cardName, imageName, cardNum);
     }
 
     //Copy constructor with error checking for null values
-    public LoteriaCard(LoteriaCard original)
-    {
-        if (original != null)
-        {
+    public LoteriaCard(LoteriaCard original) {
+        if (original != null) {
             this.setAll(original.cardName, original.imageName, original.cardNum);
-        }
-        else
-        {
+        } else {
             System.out.println("ERROR: trying to copy NULL object. Exiting program...");
             System.exit(1);
         }
@@ -59,73 +54,63 @@ public class LoteriaCard
     }
 
     // get/set methods
-    public void setAll(String cardName, String imageName, int cardNum)
-    {
+    public void setAll(String cardName, String imageName, int cardNum) {
         this.setCardName(cardName);
         this.setImageName(imageName);
         this.setCardNum(cardNum);
     }
 
-    public String getCardName()
-    {
+    public String getCardName() {
         return this.cardName;
     }
 
-    public void setCardName(String cardName)
-    {
+    public void setCardName(String cardName) {
         this.cardName = cardName;
     }
 
-    public String getImageName()
-    {
+    public String getImageName() {
         return this.imageName;
     }
 
-	/**
-	* Gets Image object for this card by reading it from the appropriate location in a replit project
-	*
-	* @return returns Image object that can be used to display it in an ImageView in GUI
-	**/
-	public Image getImage() {
-		FileInputStream input = null;
-		try {
-			input = new FileInputStream("./src/main/resources/" + this.imageName);
-		} catch (FileNotFoundException e) {
-			//e.printStackTrace();
-			System.err.println("ERROR: could not open file.");
-			System.exit(0);
-		}
-		return new Image(input);
-	}
+    /**
+     * Gets Image object for this card by reading it from the appropriate location in a replit project
+     *
+     * @return returns Image object that can be used to display it in an ImageView in GUI
+     **/
+    public Image getImage() {
+        FileInputStream input = null;
+        try {
+            input = new FileInputStream("./src/main/resources/" + this.imageName);
+        } catch (FileNotFoundException e) {
+            //e.printStackTrace();
+            System.err.println("ERROR: could not open file.");
+            System.exit(0);
+        }
+        return new Image(input);
+    }
 
-    public void setImageName(String imageName)
-    {
+    public void setImageName(String imageName) {
         this.imageName = imageName;
     }
 
-    public int getCardNum()
-    {
+    public int getCardNum() {
         return cardNum;
     }
 
-    public void setCardNum(int cardNum)
-    {
+    public void setCardNum(int cardNum) {
         this.cardNum = cardNum;
     }
 
     //toString method
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "Loteria Card #" + this.cardNum + ": " + this.cardName + "(" + this.imageName + ")";
     }
 
     //Equals method
     @Override
-    public boolean equals(Object o)
-    {
-        if(o == null || !(o instanceof LoteriaCard))
-        {
+    public boolean equals(Object o) {
+        if (o == null || !(o instanceof LoteriaCard)) {
             return false;
         }
         LoteriaCard other = (LoteriaCard) o;
