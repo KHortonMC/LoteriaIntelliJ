@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class HelloApplication extends Application {
+public class Loteria extends Application {
     private static final LoteriaCard[] LOTERIA_CARDS = {
             new LoteriaCard("Las matematicas", "1.png", 1),
             new LoteriaCard("Las ciencias", "2.png", 2),
